@@ -1,74 +1,81 @@
 var Game = Game || {};
 
-// $(Game.setUp().ready(function(){
-//   $('btn3').click(function(){
-//     Game.reload();
-//   });
-// };
-
 Game.counter = 0;
-// call function to compare the two arrays
-// Game.compareArrays = function() {
-//   if (this.userSequence.length === this.count)
-//   console.log(true);
-// };
 
-// // if userSequence.length === this.count <--- 3 === 3
-Game.checkSequence = function() {
-  // for (var i = 0; i < Game.sequence.length; i++) {
-  //   if (Game.sequence.indexOf(Game.userSequence[i]) !== -1) {
-  //     Game.counter++;
-  //   } else {
-  //     Game.counter = 0;
-  //     Game.userSequence = [];
-  //   }
-  //   if (Game.counter === 3){
-  //
-  //   }
+Game.checkSequence = function(id) {
+  if (parseInt(id) === this.sequence[this.userSequence.length]) {
+    $('h2').text('Correct!');
+    setTimeout(function(){
+      $('h2').text('Get ready...');
+    }, 500);
+    this.userSequence.push(id);
+    if (this.userSequence.length === this.sequence.length) {
+      $('li').off('click', this.playSound);
+      this.count        += 1;
+      this.sequence     = [];
+      this.userSequence = [];
+      this.pickRandom();
+    }
+  } else {
+    $('h2').text('Wrong!');
+    setTimeout(function(){
+      $('h2').text('Get ready...');
+    }, 500);
+    $('li').off('click', this.playSound);
+    this.sequence     = [];
+    this.userSequence = [];
+    this.pickRandom();
+  }
 };
 
-Game.hideSequence = function() {
-  for (var i = 0; i < this.userSequence.length; i++) {
-    $('#' + this.userSequence).removeClass('clicked');
-  }
-  Game.checkSequence();
+Game.playSound = function playSound(){
+  var id = $(this).attr('id');
+  var audio = new Audio('../music/' + id + '.mp3');
+  $('#' + id).addClass('selected');
+  audio.play();
+
+  $(audio).on('ended', function() {
+    $('#' + id).removeClass('selected');
+    Game.checkSequence(id);
+  });
 };
 
 // add click event to all li's
 // if there is a click, push the clicked element into the userSequence array
 Game.setUpListeners = function() {
-  $('li').on('click', function(){
-    $(this).addClass('clicked');
+  $('li').on('click', this.playSound);
+};
 
-    setTimeout(this.hideUserSequence.bind(this), 1500);
-    Game.userSequence.push(this);
+Game.showSequence = function(index) {
+  if (!this.sequence[index]) {
+    return this.setUpListeners();
+  }
 
+  var nextIndexInSequence = this.sequence[index];
+  var audio = new Audio('../music/' + nextIndexInSequence + '.mp3');
+  $('#' + nextIndexInSequence).addClass('selected');
+  audio.play();
+
+  $(audio).on('ended', function() {
+    $('#' + nextIndexInSequence).removeClass('selected');
+    Game.showSequence(index+1);
   });
-  Game.checkSequence();
-};
-
-Game.hideSequence = function() {
-  for (var i = 0; i < this.sequence.length; i++) {
-    $('#' + this.sequence[i]).removeClass('selected');
-  }
-  this.setUpListeners();
-};
-
-Game.showSequence = function() {
-  for (var i = 0; i < this.sequence.length; i++) {
-    $('#' + this.sequence[i]).addClass('selected');
-  }
-
-  setTimeout(this.hideSequence.bind(this), 1500);
 };
 
 Game.pickRandom = function() {
   for (var i = 0; i < this.count; i++) {
-    var box = $('li')[Math.floor(Math.random()*$('li').length)].id;
-    this.sequence.push(box);
+    var randomNumber = Math.floor(Math.random() * (this.base*this.base-1));
+    this.sequence.push(randomNumber);
   }
 
-  this.showSequence();
+  console.log(this.sequence)
+
+  setTimeout(function(){
+    $('h2').text('Get ready...');
+  },500);
+
+  // Recursively play sounds
+  this.showSequence(0);
 };
 
 Game.createGrid = function() {
@@ -80,11 +87,10 @@ Game.createGrid = function() {
 };
 
 Game.setUp = function() {
-  this.base         = 5;
+  this.base         = 4;
   this.count        = 3;
   this.sequence     = [];
   this.userSequence = [];
-  this.sound        = [];
   this.createGrid();
 };
 

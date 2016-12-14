@@ -1,5 +1,5 @@
 body {
-  background: url("/Users/Remyce/DEVELOPMENT/WDI_PROJECT_1/stardust.png");
+  background: url("../images/stardust.png");
   font-family: 'Poiret One', cursive;
   color: rgb(238, 255, 239);
   margin: 0 auto;
@@ -15,7 +15,6 @@ h1 {
   font-size: 30px;
   font-family: 'Poiret One', cursive;
   color: rgb(238, 255, 239);
-
 }
 
 p{
@@ -24,7 +23,7 @@ p{
 
 ul {
   margin: 0 auto;
-  width: 480px;
+  width: 400px;
   clear: both;
 }
 
@@ -34,9 +33,9 @@ ul > li {
   border-radius: 10px;
 }
 
-li{
+li {
   list-style: none;
-  width:80px;
+  width: 80px;
   height: 80px;
   border: 1px solid #000;
   float: left;
@@ -45,7 +44,7 @@ li{
   border-radius: 40px solid pink;
 }
 
-img{
+img {
   width: 50px;
 }
 
@@ -85,15 +84,3 @@ img{
 .selected {
   background: linear-gradient(to left, #ddd6f3 , #faaca8);
 }
-
-.clicked {
-  background: linear-gradient(to left, #114357 , #faaca8);
-}
-
-/*.win {
-background: green;
-}
-
-.lose{
-background: red;
-}*/
