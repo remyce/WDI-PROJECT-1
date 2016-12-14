@@ -17,8 +17,12 @@ h1 {
   color: rgb(238, 255, 239);
 }
 
+h2 {
+  margin-left: 175px;
+}
+
 p{
-  margin-right: 230px;
+  margin-right: 285px;
 }
 
 ul {
@@ -51,22 +55,22 @@ img {
 #button1 {
   float: right;
   margin: 0 auto;
-  margin-top: -339px;
-  margin-right: 350px;
-}
-
-#button2{
-  float: right;
-  margin: 0 auto;
   margin-top: -249px;
-  margin-right: 350px;
+  margin-right: 400px;
 }
 
-#button3{
+#button2 {
   float: right;
   margin: 0 auto;
-  margin-top: -159px;
-  margin-right: 350px;
+  margin-top: -160px;
+  margin-right: 400px;
+}
+
+#button3 {
+  float: right;
+  margin: 0 auto;
+  margin-top: -70px;
+  margin-right: 400px;
 }
 
 .btn1{
