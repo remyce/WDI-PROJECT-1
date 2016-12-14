@@ -1,37 +1,99 @@
 body {
-  background-color: #decade;
+  background: url("/Users/Remyce/DEVELOPMENT/WDI_PROJECT_1/stardust.png");
+  font-family: 'Poiret One', cursive;
+  color: rgb(238, 255, 239);
   margin: 0 auto;
   text-align: center;
 }
 
-ul#grid {
+h1 {
+  float: right;
   margin: 0 auto;
-  margin-top: 50px;
-  text-align: center;
-  padding: 0 ;
-  width: 700px;
-  height: 700px;
+  margin-top: 20px;
+  margin-right: 270px;
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-family: 'Poiret One', cursive;
+  color: rgb(238, 255, 239);
+
+}
+
+p{
+  margin-right: 230px;
 }
 
 ul {
   margin: 0 auto;
-  width: 420px;
+  width: 480px;
+  clear: both;
+}
+
+ul > li {
+  border: solid 5px #444349;
+  background: rgba(238, 255, 239, 0.32);
+  border-radius: 10px;
 }
 
 li{
   list-style: none;
-  width:100px;
-  height: 100px;
+  width:80px;
+  height: 80px;
   border: 1px solid #000;
   float: left;
   color: #000;
   text-align: center;
+  border-radius: 40px solid pink;
+}
+
+img{
+  width: 50px;
+}
+
+#button1 {
+  float: right;
+  margin: 0 auto;
+  margin-top: -339px;
+  margin-right: 350px;
+}
+
+#button2{
+  float: right;
+  margin: 0 auto;
+  margin-top: -249px;
+  margin-right: 350px;
+}
+
+#button3{
+  float: right;
+  margin: 0 auto;
+  margin-top: -159px;
+  margin-right: 350px;
+}
+
+.btn1{
+  margin-top: 35px;
+}
+
+.btn2{
+  margin-top: 75px;
+}
+
+.btn3{
+  margin-top: 70px;
 }
 
 .selected {
-  background: red;
+  background: linear-gradient(to left, #ddd6f3 , #faaca8);
 }
 
 .clicked {
-  background: blue;
+  background: linear-gradient(to left, #114357 , #faaca8);
 }
+
+/*.win {
+background: green;
+}
+
+.lose{
+background: red;
+}*/
